@@ -118,7 +118,7 @@ Why Recall?
 
 In churn prediction, failing to identify a churner (false negative) is more costly than incorrectly predicting churn.
 
-==============================
+=============================
 🏆 RESULTS
 ==============================
 Logistic Regression: Baseline performance
