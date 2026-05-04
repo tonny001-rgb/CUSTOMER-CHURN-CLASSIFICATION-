@@ -1,158 +1,203 @@
-CUSTOMER CHURN CLASSIFICATION PROJECT
-==============================
-📖 OVERVIEW
-==============================
+# 📊 Customer Churn Prediction for Telecom Customer Retention
 
-This project focuses on predicting customer churn using machine learning classification techniques.
+## 📌 Project Overview
+The goal of this project is to build a machine learning classification model that predicts customer churn in a telecom company. By identifying customers who are likely to leave, the business can take proactive actions to improve retention, reduce revenue loss, and lower customer acquisition costs.
 
-The main objective is to build a model that can identify customers who are likely to stop using a service so that the business can take proactive retention actions.
 
-The workflow includes:
 
-Business understanding
-Data understanding
-Data preparation
-Model building
-Model evaluation
-Business recommendations
-==============================
-🎯 BUSINESS PROBLEM
-==============================
+## 🎯 Business Understanding
 
-The business is experiencing customer loss (churn), which reduces revenue and long-term growth.
+### 1.1 Problem Statement
+Customer churn is a major challenge in the telecom industry. Losing customers directly impacts revenue and increases marketing costs for acquiring new users.
 
-Problem Statement:
+### 1.2 Stakeholders
+- **Customer Retention & Marketing Teams** → Target at-risk customers with promotions and retention strategies  
+- **Business Analysts & Management** → Understand churn patterns and improve business strategy  
 
-How can we predict customers who are likely to churn so that the business can intervene early and improve retention?
+### 1.3 Objective
+Build a classification model that predicts whether a customer will churn based on historical usage and account data.
 
-==============================
-👥 STAKEHOLDERS
-==============================
-Customer Retention Team → identifies at-risk customers
-Marketing Team → targets customers with retention campaigns
-Business Management → reduces revenue loss
-Customer Support Team → improves customer experience
-==============================
-📊 DATA UNDERSTANDING
-==============================
+### 1.4 Success Metric
+- **Recall (Primary Metric)**  
+We prioritize recall because failing to identify a churner is more costly than incorrectly targeting a non-churner.
 
-The dataset contains customer behavioral and account information.
+### 1.5 Methodology
+- Logistic Regression (Baseline model)
+- Decision Tree Classifier
+- Tuned Decision Tree (final model)
+- Model comparison using Recall, Precision, F1-score, and Accuracy
 
-Key features include:
-Account length
-Service usage (calls, minutes, charges)
-International plan
-Voice mail plan
-Customer service calls
-Geographic data (state)
-Target variable: churn
-Dataset properties:
-3333 rows
-21 original features
-Binary target variable (churn: yes/no)
-Key insight:
+### 1.6 Constraints
+- No external business data (pricing changes, competitor behavior)
+- Class imbalance (few churners compared to non-churners)
 
-The dataset is imbalanced:
 
-~85% non-churn customers
-~15% churn customers
 
-This makes recall a more important metric than accuracy.
+## 📂 Dataset Understanding
 
-==============================
-🧹 DATA PREPARATION
-==============================
+### Dataset Source
+Telecom customer dataset containing usage patterns, service plans, and customer behavior.
 
-The following preprocessing steps were applied:
+### Dataset Shape
+- Rows: 3333
+- Columns: 21 (before preprocessing)
 
-1. Target encoding
-Converted churn to binary values (0 and 1)
-2. Feature encoding
-Converted:
-international plan → 0/1
-voice mail plan → 0/1
-3. One-hot encoding
-Converted state column into dummy variables
-4. Feature selection
-Removed irrelevant identifiers (e.g. phone number if present)
-5. Missing values
-Checked and handled missing values
-6. Train-test split
-80% training data
-20% testing data
-Stratified to preserve class balance
-7. Feature scaling
-Applied StandardScaler for Logistic Regression
-Prevented data leakage by fitting only on training data
-==============================
-🤖 MODELING
-==============================
+### Target Variable
+- `churn`
+  - 0 → Not churned
+  - 1 → Churned
 
-Three classification models were built:
+### Class Distribution
+- 85% → No churn
+- 15% → Churn
 
-1. Logistic Regression (Baseline Model)
-Simple and interpretable
-Used as performance benchmark
-Requires scaled features
-2. Decision Tree Classifier
-Captures non-linear relationships
-Does not require scaling
-More flexible than logistic regression
-3. Tuned Decision Tree
-Improved using hyperparameters:
-max_depth
-min_samples_split
-Reduced overfitting
-Improved generalization
-==============================
-📏 MODEL EVALUATION
-==============================
+👉 This shows **strong class imbalance**
 
-Models were evaluated using:
 
-Recall (Primary Metric)
-Precision
-F1 Score
-Accuracy (Secondary Metric)
-Why Recall?
 
-In churn prediction, failing to identify a churner (false negative) is more costly than incorrectly predicting churn.
+## 🧹 Data Preparation
 
-=============================
-🏆 RESULTS
-==============================
-Logistic Regression: Baseline performance
-Decision Tree: Improved non-linear learning
-Tuned Decision Tree: Best overall performance
-Final selected model:
+### 3.1 Data Cleaning
+- Removed irrelevant column: `phone number`
+- Checked and handled missing values
 
-👉 Tuned Decision Tree (based on Recall performance)
+### 3.2 Encoding
+- Converted:
+  - `international plan` → 0/1
+  - `voice mail plan` → 0/1
+  - `churn` → 0/1
+- One-hot encoded `state`
 
-==============================
-📊 FEATURE INSIGHTS
-==============================
+### 3.3 Feature Selection
+- Separated features (X) and target (y)
 
-Most important features influencing churn:
+### 3.4 Train-Test Split
+- 80% training / 20% testing
+- Stratified split to preserve class balance
 
-Customer service calls
-International plan
-Usage patterns (day/evening/night charges)
-Total call minutes
 
-These features help explain customer churn behavior.
 
-==============================
-⚠️ LIMITATIONS
-==============================
-Class imbalance affects prediction performance
-Limited external behavioral data
-Some churn cases are still misclassified
-Model performance depends on dataset quality
-==============================
-💡 BUSINESS RECOMMENDATIONS
-==============================
-Target customers with high customer service interactions
-Monitor international plan users closely
-Provide retention offers to high-risk customers
-Improve customer support experience
-Use model predictions for proactive retention strategies
+## 📊 Data Analysis (EDA)
+
+### 4.1 Churn Distribution
+- Majority of customers do NOT churn (~85%)
+- Strong class imbalance detected
+
+### 4.2 Customer Service Calls
+- Churned customers make **more customer service calls**
+- Indicates dissatisfaction and unresolved issues
+
+### 4.3 Correlation Analysis
+Top churn-related features:
+- Customer service calls
+- International plan
+- Total day charge
+
+👉 Insight:
+Churn is influenced by **multiple factors**, not one variable
+
+
+
+## 📈 Data Visualization
+
+### Key Insights from Visuals
+
+#### 1. Churn Distribution
+- Highly imbalanced dataset
+
+#### 2. Call Usage Distribution
+- Most customers have moderate usage
+- Some high-usage outliers exist
+
+#### 3. Churn vs Usage
+- Churned customers tend to have slightly higher usage
+
+#### 4. Customer Service Calls vs Churn
+- Strong relationship between complaints and churn
+
+#### 5. Correlation Heatmap
+- No single dominant predictor
+- Moderate correlations across multiple features
+
+---
+
+## 🤖 Modeling
+
+### 5.1 Models Used
+- Logistic Regression (Baseline)
+- Decision Tree
+- Tuned Decision Tree (Final Model)
+
+
+## 📌 Model Performance
+
+| Model | Recall | Precision | F1-score | Accuracy |
+|------|--------|----------|----------|----------|
+| Logistic Regression | 0.27 | 0.56 | 0.36 | 0.86 |
+| Decision Tree | 0.64 | 0.68 | 0.66 | 0.90 |
+| Tuned Decision Tree | 0.63 | 0.76 | 0.69 | 0.92 |
+
+
+## 🏆 Best Model
+### Tuned Decision Tree
+
+Why?
+- Highest accuracy
+- Best balance of precision and recall
+- Better generalization than baseline model
+
+
+
+## 📉 Confusion Matrix Insights
+
+- True Negatives: 551
+- False Positives: 19
+- False Negatives: 36
+- True Positives: 61
+
+👉 Key focus: **Reduce False Negatives (missed churners)**
+
+
+## 🔍 Feature Importance
+
+Top predictors of churn:
+- Customer service calls
+- International plan
+- Total day charge
+- International usage
+- Evening charges
+
+
+## 📌 Key Business Insights
+
+### 1. Cost drives churn
+- High charges increase churn likelihood
+
+### 2. Poor service experience
+- More customer service calls → higher churn
+
+### 3. International plan users
+- More likely to churn due to higher costs
+
+### 4. Heavy users
+- High usage customers are sensitive to pricing
+
+
+
+## ⚠️ Limitations
+- Class imbalance affects model learning
+- No external business factors included
+- Some churn cases still misclassified
+
+
+
+## 💡 Recommendations
+- Improve customer support experience
+- Offer targeted discounts for high-risk customers
+- Review pricing for heavy users
+- Focus retention strategies on international plan users
+
+
+
+## ✅ Conclusion
+The project successfully built a churn prediction model using machine learning. The tuned decision tree model performed best, with strong recall and accuracy, making it suitable for identifying at-risk customers and supporting business retention strategies.
