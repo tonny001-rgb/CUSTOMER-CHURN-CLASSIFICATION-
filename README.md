@@ -3,7 +3,7 @@
 ## 📌 Project Overview
 The goal of this project is to build a machine learning classification model that predicts customer churn in a telecom company. By identifying customers who are likely to leave, the business can take proactive actions to improve retention, reduce revenue loss, and lower customer acquisition costs.
 
----
+
 
 ## 🎯 Business Understanding
 
@@ -31,7 +31,7 @@ We prioritize recall because failing to identify a churner is more costly than i
 - No external business data (pricing changes, competitor behavior)
 - Class imbalance (few churners compared to non-churners)
 
----
+
 
 ## 📂 Dataset Understanding
 
@@ -53,7 +53,7 @@ Telecom customer dataset containing usage patterns, service plans, and customer 
 
 👉 This shows **strong class imbalance**
 
----
+
 
 ## 🧹 Data Preparation
 
@@ -75,7 +75,7 @@ Telecom customer dataset containing usage patterns, service plans, and customer 
 - 80% training / 20% testing
 - Stratified split to preserve class balance
 
----
+
 
 ## 📊 Data Analysis (EDA)
 
@@ -96,7 +96,7 @@ Top churn-related features:
 👉 Insight:
 Churn is influenced by **multiple factors**, not one variable
 
----
+
 
 ## 📈 Data Visualization
 
@@ -128,7 +128,6 @@ Churn is influenced by **multiple factors**, not one variable
 - Decision Tree
 - Tuned Decision Tree (Final Model)
 
----
 
 ## 📌 Model Performance
 
@@ -138,7 +137,6 @@ Churn is influenced by **multiple factors**, not one variable
 | Decision Tree | 0.64 | 0.68 | 0.66 | 0.90 |
 | Tuned Decision Tree | 0.63 | 0.76 | 0.69 | 0.92 |
 
----
 
 ## 🏆 Best Model
 ### Tuned Decision Tree
@@ -148,7 +146,7 @@ Why?
 - Best balance of precision and recall
 - Better generalization than baseline model
 
----
+
 
 ## 📉 Confusion Matrix Insights
 
@@ -159,7 +157,6 @@ Why?
 
 👉 Key focus: **Reduce False Negatives (missed churners)**
 
----
 
 ## 🔍 Feature Importance
 
@@ -170,7 +167,6 @@ Top predictors of churn:
 - International usage
 - Evening charges
 
----
 
 ## 📌 Key Business Insights
 
@@ -186,14 +182,14 @@ Top predictors of churn:
 ### 4. Heavy users
 - High usage customers are sensitive to pricing
 
----
+
 
 ## ⚠️ Limitations
 - Class imbalance affects model learning
 - No external business factors included
 - Some churn cases still misclassified
 
----
+
 
 ## 💡 Recommendations
 - Improve customer support experience
@@ -201,7 +197,7 @@ Top predictors of churn:
 - Review pricing for heavy users
 - Focus retention strategies on international plan users
 
----
+
 
 ## ✅ Conclusion
 The project successfully built a churn prediction model using machine learning. The tuned decision tree model performed best, with strong recall and accuracy, making it suitable for identifying at-risk customers and supporting business retention strategies.
