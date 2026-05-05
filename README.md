@@ -201,3 +201,10 @@ Top predictors of churn:
 
 ## ✅ Conclusion
 The project successfully built a churn prediction model using machine learning. The tuned decision tree model performed best, with strong recall and accuracy, making it suitable for identifying at-risk customers and supporting business retention strategies.
+
+
+###ANTONY SILA
+LinkedIn: linkedin.com/in/ANTONY-SILA
+
+https://github.com/tonny001-rgb/CUSTOMER-CHURN-CLASSIFICATION-
+
